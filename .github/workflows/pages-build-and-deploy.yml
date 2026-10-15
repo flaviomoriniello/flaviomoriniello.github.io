@@ -48,7 +48,7 @@ jobs:
           fi
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           # Change this path to the folder that contains the generated static site (e.g., public, _site, dist)
           path: ./public
