@@ -1,0 +1,7 @@
+/* Due livelli visibili nello stesso flusso, senza testo nascosto. */
+.lesson-body h3{font-family:Georgia,serif;font-size:1.18rem;color:#5030b5;margin-top:1.8rem;font-weight:normal}.lesson-body section{scroll-margin-top:24px}.math-display{overflow-x:auto;padding:12px 0}.lesson-body p{line-height:1.75}
+
+.level-label{font-family:inherit;font-size:inherit;font-weight:500;color:#5030b5}.lesson-body h3{font-family:Georgia,serif;font-weight:400;color:#5030b5}.lesson-body .katex-mathml{position:fixed!important;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%)}
+
+/* Scientific revision: full-width captions; retain established typography. */
+.lesson-body figure{width:100%;max-width:none;margin-left:0;margin-right:0}.lesson-body figure>a,.lesson-body figure>.laser-crop{display:block;width:100%;max-width:var(--figure-width,850px);margin-left:auto;margin-right:auto}.lesson-body figure img{max-width:100%;height:auto}.lesson-body figure figcaption{width:100%;max-width:none;box-sizing:border-box}.math-display{overflow-x:auto}.table-scroll{overflow-x:auto}

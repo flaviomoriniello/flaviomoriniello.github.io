@@ -7,3 +7,6 @@
 
 /* Captions occupy the full text column; only the visual is constrained. */
 .lesson-body figure{width:100%;max-width:none;margin-left:0;margin-right:0}.lesson-body figure>a,.lesson-body figure>.laser-crop{width:100%;max-width:var(--figure-width,850px);margin-left:auto;margin-right:auto}.lesson-body figure figcaption{width:100%;max-width:none;box-sizing:border-box}.lesson-body figure>.figure-row{width:100%;max-width:850px;margin-left:auto;margin-right:auto}
+
+/* Scientific revision: full-width captions; retain established typography. */
+.lesson-body figure{width:100%;max-width:none;margin-left:0;margin-right:0}.lesson-body figure>a,.lesson-body figure>.laser-crop{display:block;width:100%;max-width:var(--figure-width,850px);margin-left:auto;margin-right:auto}.lesson-body figure img{max-width:100%;height:auto}.lesson-body figure figcaption{width:100%;max-width:none;box-sizing:border-box}.math-display{overflow-x:auto}.table-scroll{overflow-x:auto}

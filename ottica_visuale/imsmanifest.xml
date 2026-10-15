@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="VISUALE_MULTILIVELLO_V8" version="1.0"><metadata><schema>ADL SCORM</schema><schemaversion>1.2</schemaversion></metadata><organizations default="ORG_OV"><organization identifier="ORG_OV"><title>Ottica Visuale v8</title><item identifier="ITEM_OV" identifierref="RES_OV"><title>Ottica Visuale: 16 lezioni</title></item></organization></organizations><resources><resource identifier="RES_OV" type="webcontent" adlcp:scormtype="sco" href="index.html"><file href="assets/css/course.css"/>
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="VISUALE_MULTILIVELLO_V9" version="1.0"><metadata><schema>ADL SCORM</schema><schemaversion>1.2</schemaversion></metadata><organizations default="ORG_OV"><organization identifier="ORG_OV"><title>Ottica Visuale v9</title><item identifier="ITEM_OV" identifierref="RES_OV"><title>Ottica Visuale: 16 lezioni</title></item></organization></organizations><resources><resource identifier="RES_OV" type="webcontent" adlcp:scormtype="sco" href="index.html"><file href="assets/css/course.css"/>
 <file href="assets/css/multilivello.css"/>
 <file href="assets/js/scorm.js"/>
 <file href="assets/katex/contrib/auto-render.js"/>
@@ -136,6 +136,7 @@
 <file href="media/lezione-08/image67.jpg"/>
 <file href="media/lezione-09/image68.png"/>
 <file href="media/lezione-09/Ottica2_2022-2023_image394.png"/>
+<file href="media/lezione-10/croci-bicilindriche-complete.png"/>
 <file href="media/lezione-10/diagramma-slide-26.png"/>
 <file href="media/lezione-10/diagramma-slide-33.png"/>
 <file href="media/lezione-10/diagramma-slide-36.png"/>
@@ -202,6 +203,7 @@
 <file href="media/lezione-12/11-02.png"/>
 <file href="media/lezione-12/image103.png"/>
 <file href="media/lezione-12/image107.png"/>
+<file href="media/lezione-12/mappa-fronte-onda-documentata.png"/>
 <file href="media/lezione-12/Ottica2_2022-2023_image1242.png"/>
 <file href="media/lezione-12/Ottica2_2022-2023_image919.png"/>
 <file href="media/lezione-12/Ottica2_2022-2023_image964.png"/>

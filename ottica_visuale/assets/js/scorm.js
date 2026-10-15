@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const KEY='ottica_visuale_16_multilivello_v8';
+  const KEY='ottica_visuale_16_multilivello_v9';
   const ids=Array.from({length:16},(_,i)=>String(i+1).padStart(2,'0'));
   const page=document.body.dataset.pageId;
   const started=Date.now();
