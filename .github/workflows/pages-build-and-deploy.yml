@@ -48,14 +48,14 @@ jobs:
           fi
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           # Change this path to the folder that contains the generated static site (e.g., public, _site, dist)
           path: ./public
 
       - name: Deploy to GitHub Pages
         id: deploy
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
       - name: Wait for Pages deployment to become ACTIVE
         env:
