@@ -55,7 +55,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         id: deploy
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
 
       - name: Wait for Pages deployment to become ACTIVE
         env:
