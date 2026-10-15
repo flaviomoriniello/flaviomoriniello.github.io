@@ -1,0 +1,98 @@
+name: Pages build and deploy (robust)
+
+# Adjust triggers if you need different events
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  # increase if your site needs more time
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --- Optional: set up tooling for your build (Node example) ---
+      - name: Setup Node (optional)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+        if: runner.os == 'Linux'
+
+      - name: Install dependencies (adjust to your project)
+        run: |
+          # Replace with your project's install step, or remove if not needed
+          if [ -f package.json ]; then
+            npm ci
+          fi
+
+      - name: Build site
+        run: |
+          # Replace with your actual build command (example: npm run build, hugo, jekyll build, etc.)
+          if [ -f package.json ]; then
+            npm run build --if-present
+          else
+            echo "No package.json found, skipping npm build. Ensure you replace this step with your generator."
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Change this path to the folder that contains the generated static site (e.g., public, _site, dist)
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v1
+
+      - name: Wait for Pages deployment to become ACTIVE
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # How long to wait in seconds (default 20 minutes). Increase if needed.
+          TIMEOUT_SECONDS: 1200
+          # Poll interval in seconds
+          POLL_INTERVAL: 10
+        run: |
+          set -euo pipefail
+          # Calculate deadline
+          TIMEOUT_SECONDS="${TIMEOUT_SECONDS:-1200}"
+          POLL_INTERVAL="${POLL_INTERVAL:-10}"
+          DEADLINE=$((SECONDS + TIMEOUT_SECONDS))
+
+          # Derive owner and repo
+          OWNER="${{ github.repository_owner }}"
+          REPO="${{ github.repository }}" # owner/repo
+          REPO="${REPO#*/}"                # repo only
+
+          echo "Waiting up to ${TIMEOUT_SECONDS}s for Pages deployment of ${OWNER}/${REPO} to become ACTIVE..."
+
+          last_resp=""
+          while [ $SECONDS -lt $DEADLINE ]; do
+            resp=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${OWNER}/${REPO}/pages/deployment")
+            last_resp="$resp"
+            status=$(echo "$resp" | jq -r '.status // empty')
+            echo "Pages deployment status: ${status:-(empty)}"
+            if [ "$status" = "ACTIVE" ]; then
+              echo "Pages deployment is ACTIVE."
+              exit 0
+            fi
+            sleep "$POLL_INTERVAL"
+          done
+
+          echo "Timed out waiting for Pages to become ACTIVE after ${TIMEOUT_SECONDS}s."
+          echo "Last API response (for debugging):"
+          echo "$last_resp" | jq .
+          exit 1
